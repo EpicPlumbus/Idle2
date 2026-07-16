@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gold Rush: Expedition (v2.0)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <header>
+            <h1>Gold Rush: V2.0</h1>
+            <div class="stats-bar">
+                <div>Coins: <span id="coin-count" class="highlight">0</span></div>
+                <div>Passive income: <span id="cps-count">0</span>/sec</div>
+            </div>
+        </header>
+
+        <!-- --- MINIGAME ZONE --- -->
+        <section class="expedition-box">
+            <h2>Active Expedition</h2>
+            
+            <div class="expedition-controls">
+                <button id="start-run-btn" class="action-btn">Start 15s Expedition</button>
+                <div id="timer-display" class="hidden">Time Left: <span id="time-left">15</span>s</div>
+            </div>
+
+            <div id="mining-zone" class="mining-zone disabled">
+                <!-- Our target nugget will spawn here dynamically -->
+                <div id="nugget" class="nugget hidden"></div>
+                <div id="zone-overlay-text">Start an Expedition to Mine!</div>
+            </div>
+
+            <div class="run-stats">
+                Ore Mined This Run: <span id="run-ore" class="highlight">0</span>
+            </div>
+        </section>
+
+        <!-- --- THE SKILL TREE --- -->
+        <section class="skill-tree-section">
+            <h2>Skill Tree</h2>
+            <div class="tree-grid">
+                
+                <!-- PATH A: EXTRACTION (ACTIVE CLICKING) -->
+                <div class="tree-branch">
+                    <h3>⛏️ Extraction</h3>
+                    
+                    <!-- Tier 1 -->
+                    <div class="skill-node" id="node-sharp-pick">
+                        <h4>Sharp Pickaxe</h4>
+                        <p>+1 Ore per nugget click.</p>
+                        <button id="btn-sharp-pick">Unlock (50 Coins)</button>
+                    </div>
+                    
+                    <div class="connector-arrow">↓</div>
+                    
+                    <!-- Tier 2 -->
+                    <div class="skill-node locked" id="node-dynamite">
+                        <h4>Dynamite</h4>
+                        <p>Nuggets have a 20% chance to be "Super Nuggets" worth 5x Ore.</p>
+                        <button id="btn-dynamite" disabled>Unlock (250 Coins)</button>
+                    </div>
+                </div>
+
+                <!-- PATH B: ENDURANCE (TIME & EXPEDITIONS) -->
+                <div class="tree-branch">
+                    <h3>⏳ Endurance</h3>
+                    
+                    <!-- Tier 1 -->
+                    <div class="skill-node" id="node-rations">
+                        <h4>Extra Rations</h4>
+                        <p>Adds +5 seconds to your Expedition timer.</p>
+                        <button id="btn-rations">Unlock (75 Coins)</button>
+                    </div>
+                    
+                    <div class="connector-arrow">↓</div>
+                    
+                    <!-- Tier 2 -->
+                    <div class="skill-node locked" id="node-adrenaline">
+                        <h4>Adrenaline</h4>
+                        <p>Nuggets spawn 35% larger, making them easier to click.</p>
+                        <button id="btn-adrenaline" disabled>Unlock (300 Coins)</button>
+                    </div>
+                </div>
+
+                <!-- PATH C: INDUSTRY (PASSIVE INCOME) -->
+                <div class="tree-branch">
+                    <h3>🏭 Industry</h3>
+                    
+                    <!-- Tier 1 -->
+                    <div class="skill-node" id="node-smelter">
+                        <h4>Smelter</h4>
+                        <p>Automatically generates +2 Coins/second passively.</p>
+                        <button id="btn-smelter">Unlock (120 Coins)</button>
+                    </div>
+                    
+                    <div class="connector-arrow">↓</div>
+                    
+                    <!-- Tier 2 -->
+                    <div class="skill-node locked" id="node-drill">
+                        <h4>Automated Drill</h4>
+                        <p>Generates +10 Coins/second passively.</p>
+                        <button id="btn-drill" disabled>Unlock (500 Coins)</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
